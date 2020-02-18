@@ -2,7 +2,7 @@
 echo "WELCOME TO EMPLOYEE WAGE PROGRAM IN MASTER BRANCH"
 checkAttendance()
 {
-Attendance=$(($Random%2))
+Attendance=$(($RANDOM%2))
 if
 (($Attendance<1))
 then
@@ -10,34 +10,27 @@ echo "Employee is Present"
 else
 echo "Employee is Absent"
 fi
+}
 checkAttendance
 FullDayWages()
-checkAttendance()
-{
-attendance=$(($Random%2))
-if(($Attendance<1))
-then
-return 1
-else
-return 0
-fi
-}
-fullDayWage()
 {
 Wages_per_hour=20
 FullDay_Working=8
-TotalWagesPerDay=$(($Wages_per_hour*$FullDay_Working))
+FullDayWages=$(($Wages_per_hour*$FullDay_Working))
 echo "TotalWagesPerDay=$TotalWagesPerDay"
+return $FullDayWages
 }
 FullDayWages
-return $fullDayWage
+
 HalfDayWages(){
 Wages_Per_Hour=20
 Part_Time_Hour=4
-TotalWagesPerDay=$(($Wages_Per_Hour*$Part_Time_Hour))
+HalfDayWages=$(($Wages_Per_Hour*$Part_Time_Hour))
 echo "Total_Wages_Per_Day=$TotalWagesPerDay"
+return $HalfDayWages
 }
 HalfDayWages
+
 echo "1. calculate FullDayWages"
 echo "2. calculate HalfDayWages"
 read cases
@@ -52,59 +45,41 @@ case $cases in
 		echo "Kindly enter a valid option"
 		;;
 esac
-return $halfDayWages
-}
-MonthlyWage
-{
 count=0
-checkAttendance(){
-checkAttendance()
-        {
-checkAttendance()
-        {
-	Attendance=$(($RANDOM%2))
-	if(($Attendance<1))
-	then
-		return 1
-	else
-		return 0
-	fi
-}
+
 MonthlyWages()
 {
 for((i=0;i<20;i++))
 do
 checkAttendance
 r=$?
-if(($r==1))
-=======
 if((r==0))
 then
 count=$((count+1))
 fi
 done
 echo "employee is present $countdays"
-echo -e "1.monthly wage of fulltime employee"
-    	"2.monthly wage of parttime employee"
+echo "Enter one option"
+echo -e "1.monthly wage of fulltime employee\n2.monthly wage of parttime employee"
 read cases
 case $cases in
        1)
-		fullDayWage
-                fulltimeWage=$?
-		echo"monthly wage fulltimewage employee=$(($fulltimewage*$count))"
+		FullDayWages
+                fulltimewage=$?
+		echo "monthly wage fulltimewage employee=$(($fulltimewage*$count))"
      		;;
 	2)
-  		halfdayWage
-		halftimeWage=$?
-		echo"monthly wage Halftimewage employee=$(($halftimewage*$count))"
+  		HalfdayWages
+		halftimewage=$?
+		echo "monthly wage Halftimewage employee=$(($halftimewage*$count))"
 		;;
         *)
-		echo"enter a valid option"
+		echo "enter a valid option"
 		;;
 esac
 return $count
 }
-MonthlyWage
+MonthlyWages
 echo "Conditional monthly payment of 100hrs||20 days"
 echo -e "1.FullDayWages\n2.HalfDayWages"
 echo "enter one option"
@@ -133,7 +108,6 @@ case $option in
 				echo "Monthly payment of HalfDayWages is Rs"$monthlywages
 			;;
 esac
-}
 MonthlyWages
 WorkingHour()
 {
@@ -163,8 +137,7 @@ count=0
 		return $TotalWorkHour
 }
 WorkingHour
-echo "total working hour of an employee is $?"
-        }
+echo "total working hour of an employee is: $?"
 
 DailyWages()
 {
@@ -213,7 +186,6 @@ case $option in
 			echo "sum of total wages is Rs"$sum
 }
 DailyWages
-}
 DailyAndMonthlyTotalWages()
 {
 	echo "Daily, Monthly and Total Wages Of an Employee In a Month"
@@ -263,11 +235,11 @@ DailyAndMonthlyTotalWages()
 			else
 				echo -n "Day $((i+1)) :  Present "
 			fi
-			echo $((array[$i])) ""
+			echo $((array[$i]))" "
 			sum=$(($sum+array[$i]))
 
 		done
 			echo
-			echo "Sum of Total Wages is Rs" $sum
+			echo "Sum of Total Wages is Rs"$sum
 }
 DailyAndMonthlyTotalWages
